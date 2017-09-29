@@ -1,7 +1,3 @@
-/*
-  eslint-disable react/prefer-stateless-function, react/jsx-boolean-value,
-  no-undef, jsx-a11y/label-has-for
-*/
 class TimersDashboard extends React.Component {
   render() {
     return (
@@ -13,27 +9,9 @@ class TimersDashboard extends React.Component {
           />
         </div>
       </div>
-    );
+    )
   }
-}
-
-class ToggleableTimerForm extends React.Component {
-  render() {
-    if (this.props.isOpen) {
-      return (
-        <TimerForm />
-      );
-    } else {
-      return (
-        <div className='ui basic content center aligned segment'>
-          <button className='ui basic button icon'>
-            <i className='plus icon' />
-          </button>
-        </div>
-      );
-    }
-  }
-}
+}//end TimersDashboard
 
 class EditableTimerList extends React.Component {
   render() {
@@ -54,9 +32,9 @@ class EditableTimerList extends React.Component {
           editFormOpen={true}
         />
       </div>
-    );
+    )
   }
-}
+}//end EditableTimerList
 
 class EditableTimer extends React.Component {
   render() {
@@ -66,7 +44,7 @@ class EditableTimer extends React.Component {
           title={this.props.title}
           project={this.props.project}
         />
-      );
+      )
     } else {
       return (
         <Timer
@@ -75,14 +53,62 @@ class EditableTimer extends React.Component {
           elapsed={this.props.elapsed}
           runningSince={this.props.runningSince}
         />
-      );
+      )
     }
   }
-}
+}//end EditableTimer
+
+class TimerForm extends React.Component {
+  render () {
+    const submitText = this.props.title ? 'Update' : 'Create'
+    return (
+      <div className='ui centered card'>
+        <div className='content'>
+          <div className='ui form'>
+            <div className='field'>
+              <label>Title</label>
+              <input type='text' defaultValue={this.props.title} />
+            </div>
+            <div className='field'>
+              <label>Project</label>
+              <input type='text' defaultValue={this.props.project} />
+            </div>
+            <div className='ui two bottom attached buttons'>
+              <button className='ui basic blue button'>
+                {submitText}
+              </button>
+              <button className='ui basic red button'>
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}//end TimerForm
+
+class ToggleableTimerForm extends React.Component {
+  render () {
+    if ( this.props.isOpen ) {
+      return (
+        <TimerForm />
+      )
+    }else {
+      return (
+        <div className='ui basic content center aligned segment'>
+          <button className='ui basic button icon'>
+            <i className='plus icon' />
+          </button>
+        </div>
+      )
+    }
+  }
+}//end ToggleableTimerForm
 
 class Timer extends React.Component {
-  render() {
-    const elapsedString = helpers.renderElapsedString(this.props.elapsed);
+  render () {
+    const elapsedString = helpers.renderElapsedString(this.props.elapsed)
     return (
       <div className='ui centered card'>
         <div className='content'>
@@ -110,39 +136,9 @@ class Timer extends React.Component {
           Start
         </div>
       </div>
-    );
+    )
   }
-}
-
-class TimerForm extends React.Component {
-  render() {
-    const submitText = this.props.title ? 'Update' : 'Create';
-    return (
-      <div className='ui centered card'>
-        <div className='content'>
-          <div className='ui form'>
-            <div className='field'>
-              <label>Title</label>
-              <input type='text' defaultValue={this.props.title} />
-            </div>
-            <div className='field'>
-              <label>Project</label>
-              <input type='text' defaultValue={this.props.project} />
-            </div>
-            <div className='ui two bottom attached buttons'>
-              <button className='ui basic blue button'>
-                {submitText}
-              </button>
-              <button className='ui basic red button'>
-                Cancel
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+}//end Timer
 
 ReactDOM.render(
   <TimersDashboard />,
