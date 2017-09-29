@@ -1,3 +1,9 @@
+# React Time Tracking App
+- Built following FullStack-React-Book
+
+## Built With
+-ReactJS, Babel, Node, Express.
+
 ### Running the app
 
 1. Ensure you have `npm` installed.
